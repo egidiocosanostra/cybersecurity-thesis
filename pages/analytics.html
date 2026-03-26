@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — Cybersecurity Thesis</title>
+  <meta name="description" content="Dashboard analitica degli incidenti di cybersecurity 2025-2026">
+  <base href="../">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">🛡️ Cyber<span>Thesis</span></a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="pages/analytics.html">Analytics</a></li>
+      <li><a href="pages/timeline.html">Timeline</a></li>
+      <li><a href="pages/about.html">About</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="btn-icon theme-toggle" aria-label="Modalità scura">🌙</button>
+      <button class="nav__hamburger" aria-label="Apri menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="page-wrap">
+  <div class="container">
+
+    <div style="margin-bottom:28px;">
+      <div class="page-badge">📊 Analytics</div>
+      <h1 class="section-title">Dashboard Analitica</h1>
+      <p class="section-subtitle">Statistiche aggregate e grafici sugli incidenti cybersecurity 2025-2026</p>
+    </div>
+
+    <!-- Charts row 1 -->
+    <div class="analytics-grid" id="charts-row1">
+      <!-- Pie: by industry -->
+      <div class="chart-card">
+        <div class="chart-card__title">🏭 Incidenti per industria</div>
+        <div class="pie-chart-wrap">
+          <canvas class="pie-chart" id="pie-industry" width="140" height="140" aria-label="Grafico a torta per industria"></canvas>
+          <div class="pie-legend" id="legend-industry"></div>
+        </div>
+      </div>
+
+      <!-- Bar: by attack type -->
+      <div class="chart-card">
+        <div class="chart-card__title">⚡ Distribuzione per tipo di attacco</div>
+        <div class="bar-chart" id="bar-attack"></div>
+      </div>
+
+      <!-- Bar: by severity -->
+      <div class="chart-card">
+        <div class="chart-card__title">⚠️ Distribuzione per severità</div>
+        <div class="bar-chart" id="bar-severity"></div>
+      </div>
+    </div>
+
+    <!-- Line chart: temporal trend -->
+    <div class="full-card">
+      <div class="chart-card__title">📈 Trend temporale (per mese)</div>
+      <div class="line-chart-wrap">
+        <svg id="line-chart" width="100%" height="180" aria-label="Grafico di tendenza temporale"></svg>
+      </div>
+    </div>
+
+    <!-- Stats table -->
+    <div class="full-card">
+      <div class="chart-card__title" style="margin-bottom:16px;">📋 Statistiche aggregate per industria</div>
+      <div class="stats-table-wrap">
+        <table class="stats-table" id="stats-table">
+          <thead>
+            <tr>
+              <th>Industria</th>
+              <th>Incidenti</th>
+              <th>Critical</th>
+              <th>High</th>
+              <th>Medium</th>
+              <th>Low</th>
+              <th>Utenti a rischio</th>
+            </tr>
+          </thead>
+          <tbody id="stats-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>🛡️ <strong>CyberThesis</strong> — Tesi di Laurea in Cybersecurity &nbsp;|&nbsp;
+      <a href="../index.html">Dashboard</a> &nbsp;·&nbsp;
+      <a href="timeline.html">Timeline</a> &nbsp;·&nbsp;
+      <a href="about.html">About</a>
+    </p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function () {
+  const PIE_COLORS = [
+    '#0071e3','#ff3b30','#ff9500','#34c759','#5856d6',
+    '#ff2d55','#5ac8fa','#ffcc00','#ff6b35','#30b0c7',
+    '#32ade6','#af52de','#ff375f','#6c6c70','#a2845e'
+  ];
+
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function fmtNum(n) {
+    if (!n) return '—';
+    if (n >= 1e9) return (n / 1e9).toFixed(1) + 'B';
+    if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+    if (n >= 1e3) return Math.round(n / 1e3) + 'K';
+    return n.toLocaleString('it-IT');
+  }
+
+  /* --- Pie chart via Canvas -------------------------------- */
+  function drawPie(canvasId, data) {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const cx = 70, cy = 70, r = 60;
+    const total = data.reduce((s, d) => s + d.value, 0);
+    let angle = -Math.PI / 2;
+
+    data.forEach((d, i) => {
+      const slice = (d.value / total) * 2 * Math.PI;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, r, angle, angle + slice);
+      ctx.fillStyle = PIE_COLORS[i % PIE_COLORS.length];
+      ctx.fill();
+      angle += slice;
+    });
+
+    // Centre hole (donut)
+    ctx.beginPath();
+    ctx.arc(cx, cy, 34, 0, 2 * Math.PI);
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.fillStyle = isDark ? '#1c1c1e' : '#ffffff';
+    ctx.fill();
+  }
+
+  function buildLegend(containerId, data) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = data.slice(0, 8).map((d, i) => `
+      <div class="pie-legend-item">
+        <div class="pie-dot" style="background:${PIE_COLORS[i % PIE_COLORS.length]}"></div>
+        <span>${escHtml(d.label)} (${d.value})</span>
+      </div>`).join('');
+  }
+
+  /* --- Bar chart ------------------------------------------ */
+  function buildBar(containerId, data, color) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    const max = Math.max(...data.map(d => d.value), 1);
+    el.innerHTML = data.map(d => `
+      <div class="bar-row">
+        <div class="bar-row__label" title="${escHtml(d.label)}">${escHtml(d.label)}</div>
+        <div class="bar-row__track">
+          <div class="bar-row__fill" style="width:${Math.round(d.value/max*100)}%;background:${color || 'var(--accent)'}"></div>
+        </div>
+        <div class="bar-row__value">${d.value}</div>
+      </div>`).join('');
+  }
+
+  /* --- Line chart (SVG) ------------------------------------ */
+  function buildLine(svgId, monthlyData) {
+    const svg = document.getElementById(svgId);
+    if (!svg) return;
+
+    const W = svg.getBoundingClientRect().width || 700;
+    const H = 160, pad = { top: 16, right: 20, bottom: 30, left: 30 };
+    const max = Math.max(...monthlyData.map(d => d.value), 1);
+    const n   = monthlyData.length;
+    const xStep = (W - pad.left - pad.right) / Math.max(n - 1, 1);
+    const yScale = v => pad.top + (1 - v / max) * (H - pad.top - pad.bottom);
+
+    const pts = monthlyData.map((d, i) => ({
+      x: pad.left + i * xStep,
+      y: yScale(d.value),
+    }));
+
+    const polyline = pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
+
+    const area = [
+      `M${pts[0].x.toFixed(1)},${pts[0].y.toFixed(1)}`,
+      ...pts.slice(1).map(p => `L${p.x.toFixed(1)},${p.y.toFixed(1)}`),
+      `L${pts[pts.length-1].x.toFixed(1)},${H - pad.bottom}`,
+      `L${pts[0].x.toFixed(1)},${H - pad.bottom}Z`
+    ].join(' ');
+
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const txtCol = isDark ? '#98989d' : '#6e6e73';
+
+    svg.innerHTML = `
+      <defs>
+        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0071e3" stop-opacity=".25"/>
+          <stop offset="100%" stop-color="#0071e3" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="${area}" fill="url(#areaGrad)"/>
+      <polyline points="${polyline}" fill="none" stroke="#0071e3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      ${pts.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4" fill="#0071e3"/>`).join('')}
+      ${monthlyData.map((d, i) => `
+        <text x="${pts[i].x.toFixed(1)}" y="${H - pad.bottom + 14}" text-anchor="middle"
+              font-size="10" fill="${txtCol}" font-family="-apple-system,sans-serif">${escHtml(d.label)}</text>
+      `).join('')}
+    `;
+  }
+
+  /* --- Stats table ---------------------------------------- */
+  function buildTable(data) {
+    const tbody = document.getElementById('stats-tbody');
+    if (!tbody) return;
+
+    tbody.innerHTML = data.map(row => `
+      <tr>
+        <td>${escHtml(row.industry)}</td>
+        <td><strong>${row.total}</strong></td>
+        <td style="color:var(--critical)">${row.Critical || 0}</td>
+        <td style="color:var(--high)">${row.High || 0}</td>
+        <td style="color:#a07000">${row.Medium || 0}</td>
+        <td style="color:var(--low)">${row.Low || 0}</td>
+        <td>${fmtNum(row.affected)}</td>
+      </tr>`).join('');
+  }
+
+  /* --- Boot ----------------------------------------------- */
+  document.addEventListener('DOMContentLoaded', () => {
+    window.CyberThesis?.loadData().then(incidents => {
+      // Group by industry
+      const byIndustry = {};
+      incidents.forEach(inc => {
+        if (!byIndustry[inc.industry]) {
+          byIndustry[inc.industry] = { total:0, Critical:0, High:0, Medium:0, Low:0, affected:0 };
+        }
+        byIndustry[inc.industry].total++;
+        byIndustry[inc.industry][inc.severity] = (byIndustry[inc.industry][inc.severity] || 0) + 1;
+        byIndustry[inc.industry].affected += inc.affected_users || 0;
+      });
+
+      const industryData = Object.entries(byIndustry)
+        .map(([k, v]) => ({ label: k, value: v.total }))
+        .sort((a, b) => b.value - a.value);
+
+      drawPie('pie-industry', industryData);
+      buildLegend('legend-industry', industryData);
+
+      // Rebuild pie on theme change
+      document.querySelectorAll('.theme-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+          setTimeout(() => drawPie('pie-industry', industryData), 50);
+        });
+      });
+
+      // Attack type bar
+      const byAttack = {};
+      incidents.forEach(i => { byAttack[i.attack_type] = (byAttack[i.attack_type] || 0) + 1; });
+      const attackData = Object.entries(byAttack)
+        .map(([k, v]) => ({ label: k, value: v }))
+        .sort((a, b) => b.value - a.value);
+      buildBar('bar-attack', attackData, '#0071e3');
+
+      // Severity bar
+      const sevOrder = ['Critical','High','Medium','Low'];
+      const bySev = {};
+      incidents.forEach(i => { bySev[i.severity] = (bySev[i.severity] || 0) + 1; });
+      const sevColors = { Critical:'#ff3b30', High:'#ff9500', Medium:'#ffcc00', Low:'#34c759' };
+      const sevData = sevOrder
+        .filter(s => bySev[s])
+        .map(s => ({ label: s, value: bySev[s], color: sevColors[s] }));
+      const sevMax = Math.max(...sevData.map(d => d.value), 1);
+      const barSev = document.getElementById('bar-severity');
+      if (barSev) {
+        barSev.innerHTML = sevData.map(d => `
+          <div class="bar-row">
+            <div class="bar-row__label">${escHtml(d.label)}</div>
+            <div class="bar-row__track">
+              <div class="bar-row__fill" style="width:${Math.round(d.value/sevMax*100)}%;background:${d.color}"></div>
+            </div>
+            <div class="bar-row__value">${d.value}</div>
+          </div>`).join('');
+      }
+
+      // Monthly trend
+      const byMonth = {};
+      incidents.forEach(inc => {
+        const key = inc.date.slice(0, 7);
+        byMonth[key] = (byMonth[key] || 0) + 1;
+      });
+      const months = Object.keys(byMonth).sort();
+      const monthLabels = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+      const lineData = months.map(m => ({
+        label: monthLabels[parseInt(m.slice(5,7),10) - 1] + ' ' + m.slice(2,4),
+        value: byMonth[m]
+      }));
+      buildLine('line-chart', lineData);
+
+      // Table
+      const tableData = Object.entries(byIndustry)
+        .map(([industry, v]) => ({ industry, ...v }))
+        .sort((a, b) => b.total - a.total);
+      buildTable(tableData);
+    });
+  });
+}());
+</script>
+</body>
+</html>

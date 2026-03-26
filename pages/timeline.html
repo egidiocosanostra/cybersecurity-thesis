@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline — Cybersecurity Thesis</title>
+  <meta name="description" content="Timeline cronologica degli incidenti di cybersecurity 2025-2026">
+  <base href="../">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">🛡️ Cyber<span>Thesis</span></a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="pages/analytics.html">Analytics</a></li>
+      <li><a href="pages/timeline.html">Timeline</a></li>
+      <li><a href="pages/about.html">About</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="btn-icon theme-toggle" aria-label="Modalità scura">🌙</button>
+      <button class="nav__hamburger" aria-label="Apri menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="page-wrap">
+  <div class="container">
+
+    <div style="margin-bottom:28px;">
+      <div class="page-badge">🕐 Timeline</div>
+      <h1 class="section-title">Timeline Cronologica</h1>
+      <p class="section-subtitle">Tutti gli incidenti ordinati dal più recente al più lontano nel tempo</p>
+    </div>
+
+    <div class="timeline" id="timeline" aria-label="Timeline incidenti" aria-live="polite">
+      <div style="color:var(--txt-sub);padding:20px 0;">⏳ Caricamento…</div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>🛡️ <strong>CyberThesis</strong> — Tesi di Laurea in Cybersecurity &nbsp;|&nbsp;
+      <a href="../index.html">Dashboard</a> &nbsp;·&nbsp;
+      <a href="analytics.html">Analytics</a> &nbsp;·&nbsp;
+      <a href="about.html">About</a>
+    </p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function () {
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function fmtDate(iso) {
+    const [y, m, d] = iso.split('-').map(Number);
+    const months = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno',
+                    'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+    return `${d} ${months[m - 1]} ${y}`;
+  }
+
+  function fmtNum(n) {
+    if (!n) return '—';
+    if (n >= 1e9) return (n / 1e9).toFixed(1) + ' miliardi';
+    if (n >= 1e6) return (n / 1e6).toFixed(1) + ' milioni';
+    if (n >= 1e3) return Math.round(n / 1e3) + 'K';
+    return n.toLocaleString('it-IT');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const timeline = document.getElementById('timeline');
+
+    window.CyberThesis?.loadData().then(incidents => {
+      // Sort newest first (already sorted in main.js but ensure it here too)
+      incidents.sort((a, b) => b.date.localeCompare(a.date));
+
+      if (!incidents.length) {
+        timeline.innerHTML = '<div style="color:var(--txt-sub)">Nessun incidente trovato.</div>';
+        return;
+      }
+
+      timeline.innerHTML = incidents.map(inc => `
+        <div class="timeline-item timeline-item--${escHtml(inc.severity)}">
+          <div class="timeline-card">
+            <div class="timeline-card__date">📅 ${fmtDate(inc.date)}</div>
+            <div class="timeline-card__company">${escHtml(inc.company)}</div>
+            <div class="timeline-card__meta">
+              <span class="badge badge--${inc.severity.toLowerCase()}">${escHtml(inc.severity)}</span>
+              <span class="tag">⚡ ${escHtml(inc.attack_type)}</span>
+              <span class="tag">🏭 ${escHtml(inc.industry)}</span>
+              ${inc.affected_users ? `<span class="tag">👥 ${fmtNum(inc.affected_users)}</span>` : ''}
+            </div>
+            <p class="timeline-card__desc">${escHtml(inc.description)}</p>
+            <p style="font-size:12px;color:var(--txt-sub);margin-top:8px;">
+              💥 <em>${escHtml(inc.impact)}</em>
+            </p>
+            <p style="font-size:11px;color:var(--txt-sub);margin-top:6px;">📰 ${escHtml(inc.source)}</p>
+          </div>
+        </div>`).join('');
+    }).catch(err => {
+      timeline.innerHTML = `<div style="color:var(--txt-sub)">Errore nel caricamento: ${escHtml(err.message)}</div>`;
+    });
+  });
+}());
+</script>
+</body>
+</html>
