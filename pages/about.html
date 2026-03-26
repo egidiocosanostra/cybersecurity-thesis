@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Cybersecurity Thesis</title>
+  <meta name="description" content="Informazioni sulla tesi di laurea in cybersecurity">
+  <base href="../">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">🛡️ Cyber<span>Thesis</span></a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="pages/analytics.html">Analytics</a></li>
+      <li><a href="pages/timeline.html">Timeline</a></li>
+      <li><a href="pages/about.html">About</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="btn-icon theme-toggle" aria-label="Modalità scura">🌙</button>
+      <button class="nav__hamburger" aria-label="Apri menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="page-wrap">
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="about-hero">
+      <div class="about-hero__emoji">🛡️</div>
+      <h1 class="about-hero__title">Cybersecurity Thesis</h1>
+      <p class="about-hero__sub">
+        Un'analisi degli incidenti informatici più significativi del biennio 2025-2026,
+        con focus su tipologie di attacco, settori colpiti e impatti sugli utenti.
+      </p>
+    </div>
+
+    <!-- Info cards -->
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card__icon">🎓</div>
+        <div class="about-card__title">La Tesi</div>
+        <div class="about-card__text">
+          Questo progetto nasce come supporto visuale a una tesi di laurea magistrale
+          in Sicurezza Informatica. L'obiettivo è presentare i dati sugli incidenti
+          cyber in modo accessibile e interattivo, evidenziando trend e pattern.
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card__icon">📊</div>
+        <div class="about-card__title">Il Dataset</div>
+        <div class="about-card__text">
+          Il dataset comprende oltre 30 incidenti documentati tra il 2025 e il 2026,
+          selezionati per rilevanza, impatto e disponibilità di informazioni verificate
+          da fonti autorevoli. Include data breach, ransomware, attacchi nation-state e altro.
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card__icon">🔬</div>
+        <div class="about-card__title">Metodologia</div>
+        <div class="about-card__text">
+          Gli incidenti sono stati classificati secondo le tassonomie MITRE ATT&amp;CK
+          e VERIS. I dati di impatto (utenti colpiti, settori) sono derivati da
+          comunicazioni ufficiali, ricercatori di sicurezza e organi di stampa specializzata.
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card__icon">⚡</div>
+        <div class="about-card__title">Tecnologia</div>
+        <div class="about-card__text">
+          Il sito è costruito con HTML5, CSS3 e JavaScript vanilla — nessuna dipendenza
+          esterna. Il design segue le Human Interface Guidelines di Apple. Deployato
+          automaticamente su GitHub Pages via GitHub Actions.
+        </div>
+      </div>
+    </div>
+
+    <!-- Key findings -->
+    <div class="full-card">
+      <div class="chart-card__title" style="margin-bottom:16px;">🔑 Key Findings</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+        <div style="padding:16px;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border);">
+          <div style="font-size:28px;font-weight:700;color:var(--critical)">70%</div>
+          <div style="font-size:13px;color:var(--txt-sub);margin-top:4px;">degli attacchi classificati Critical o High</div>
+        </div>
+        <div style="padding:16px;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border);">
+          <div style="font-size:28px;font-weight:700;color:var(--high)">#1</div>
+          <div style="font-size:13px;color:var(--txt-sub);margin-top:4px;">il Ransomware è il tipo di attacco più comune</div>
+        </div>
+        <div style="padding:16px;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border);">
+          <div style="font-size:28px;font-weight:700;color:var(--accent)">Healthcare</div>
+          <div style="font-size:13px;color:var(--txt-sub);margin-top:4px;">settore più colpito con impatti critici sui pazienti</div>
+        </div>
+        <div style="padding:16px;background:var(--bg);border-radius:var(--r-sm);border:1px solid var(--border);">
+          <div style="font-size:28px;font-weight:700;color:var(--low)">3B+</div>
+          <div style="font-size:13px;color:var(--txt-sub);margin-top:4px;">utenti totali coinvolti nel biennio analizzato</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sources -->
+    <div class="full-card">
+      <div class="chart-card__title" style="margin-bottom:16px;">📰 Fonti dati utilizzate</div>
+      <ul class="sources-list">
+        <li class="source-item">
+          <div class="source-item__icon">🏛️</div>
+          <div>
+            <div class="source-item__name">CISA — Cybersecurity & Infrastructure Security Agency</div>
+            <div class="source-item__url">cisa.gov/cybersecurity-advisories</div>
+          </div>
+        </li>
+        <li class="source-item">
+          <div class="source-item__icon">🔒</div>
+          <div>
+            <div class="source-item__name">BleepingComputer</div>
+            <div class="source-item__url">bleepingcomputer.com</div>
+          </div>
+        </li>
+        <li class="source-item">
+          <div class="source-item__icon">🔐</div>
+          <div>
+            <div class="source-item__name">SecurityWeek</div>
+            <div class="source-item__url">securityweek.com</div>
+          </div>
+        </li>
+        <li class="source-item">
+          <div class="source-item__icon">🕵️</div>
+          <div>
+            <div class="source-item__name">Have I Been Pwned</div>
+            <div class="source-item__url">haveibeenpwned.com</div>
+          </div>
+        </li>
+        <li class="source-item">
+          <div class="source-item__icon">📡</div>
+          <div>
+            <div class="source-item__name">Wired — Security</div>
+            <div class="source-item__url">wired.com/category/security</div>
+          </div>
+        </li>
+        <li class="source-item">
+          <div class="source-item__icon">🏥</div>
+          <div>
+            <div class="source-item__name">HHS Office for Civil Rights (healthcare breaches)</div>
+            <div class="source-item__url">hhs.gov/hipaa/for-professionals/breach-notification</div>
+          </div>
+        </li>
+        <li class="source-item">
+          <div class="source-item__icon">☁️</div>
+          <div>
+            <div class="source-item__name">Wiz Research</div>
+            <div class="source-item__url">wiz.io/blog</div>
+          </div>
+        </li>
+        <li class="source-item">
+          <div class="source-item__icon">🔎</div>
+          <div>
+            <div class="source-item__name">Mandiant / Google Threat Intelligence</div>
+            <div class="source-item__url">mandiant.com/resources/reports</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Contact / Author -->
+    <div class="full-card" style="text-align:center;">
+      <div style="font-size:40px;margin-bottom:12px;">👨‍💻</div>
+      <h2 style="font-size:20px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px;">Autore</h2>
+      <p style="font-size:15px;color:var(--txt-sub);max-width:480px;margin:0 auto 16px;">
+        Progetto sviluppato per la tesi magistrale in Sicurezza Informatica.
+        I dati sono a scopo puramente accademico e di ricerca.
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="https://github.com/egidiocosanostra/cybersecurity-thesis"
+           target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:6px;padding:10px 18px;
+                  background:var(--accent);color:#fff;border-radius:var(--r-full);
+                  font-size:14px;font-weight:500;opacity:1;">
+          🐙 GitHub Repository
+        </a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>🛡️ <strong>CyberThesis</strong> — Tesi di Laurea in Cybersecurity &nbsp;|&nbsp;
+      <a href="../index.html">Dashboard</a> &nbsp;·&nbsp;
+      <a href="analytics.html">Analytics</a> &nbsp;·&nbsp;
+      <a href="timeline.html">Timeline</a>
+    </p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
