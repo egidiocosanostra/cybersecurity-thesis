@@ -1,0 +1,1012 @@
+[
+  {
+    "id": "CVE-2024-3400",
+    "cve_id": "CVE-2024-3400",
+    "name": "PAN-OS GlobalProtect OS Command Injection",
+    "discovery_date": "2024-04-10",
+    "disclosure_date": "2024-04-12",
+    "software": "PAN-OS GlobalProtect Gateway",
+    "vendor": "Palo Alto Networks",
+    "description": "OS command injection nella funzionalità GlobalProtect di PAN-OS consente a un attaccante remoto non autenticato di eseguire codice arbitrario con privilegi root sul firewall.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "PAN-OS 10.2 < 10.2.9-h1, 11.0 < 11.0.4-h1, 11.1 < 11.1.2-h3",
+    "affected_entities": [
+      "US Government",
+      "Critical Infrastructure",
+      "Enterprise Networks"
+    ],
+    "impact": "Esecuzione di codice remoto non autenticata con privilegi root su firewall di rete. Attivamente sfruttata da gruppi APT.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-3400",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-3400"
+    }
+  },
+  {
+    "id": "CVE-2024-4577",
+    "cve_id": "CVE-2024-4577",
+    "name": "PHP CGI Argument Injection RCE",
+    "discovery_date": "2024-06-06",
+    "disclosure_date": "2024-06-06",
+    "software": "PHP CGI",
+    "vendor": "PHP Group",
+    "description": "Vulnerabilità di argument injection nel modulo CGI di PHP su Windows permette l'esecuzione di codice remoto tramite richieste HTTP appositamente create, bypassando le protezioni introdotte con CVE-2012-1823.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "PHP 8.1 < 8.1.29, PHP 8.2 < 8.2.20, PHP 8.3 < 8.3.8",
+    "affected_entities": [
+      "Web Hosting Providers",
+      "E-commerce Platforms",
+      "Enterprise Web Servers"
+    ],
+    "impact": "Esecuzione arbitraria di comandi OS sul server web. Migliaia di server Windows con PHP CGI immediatamente esposti.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-4577",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-4577"
+    }
+  },
+  {
+    "id": "CVE-2024-21762",
+    "cve_id": "CVE-2024-21762",
+    "name": "FortiOS Out-of-Bounds Write RCE",
+    "discovery_date": "2024-02-08",
+    "disclosure_date": "2024-02-08",
+    "software": "FortiOS / FortiProxy",
+    "vendor": "Fortinet",
+    "description": "Scrittura out-of-bounds in FortiOS SSL-VPN consente a un attaccante remoto non autenticato di eseguire codice arbitrario tramite richieste HTTP appositamente formate.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "FortiOS 7.4.0-7.4.2, 7.2.0-7.2.6, 7.0.0-7.0.13, 6.4.0-6.4.14",
+    "affected_entities": [
+      "Enterprise Networks",
+      "Government Agencies",
+      "Financial Institutions"
+    ],
+    "impact": "Compromissione completa di firewall aziendali e gateway VPN. Attivamente sfruttata da threat actor state-sponsored.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-21762",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21762"
+    }
+  },
+  {
+    "id": "CVE-2024-1709",
+    "cve_id": "CVE-2024-1709",
+    "name": "ConnectWise ScreenConnect Authentication Bypass",
+    "discovery_date": "2024-02-19",
+    "disclosure_date": "2024-02-20",
+    "software": "ConnectWise ScreenConnect",
+    "vendor": "ConnectWise",
+    "description": "Bypass di autenticazione che consente l'accesso non autorizzato al pannello di configurazione. Combinato con CVE-2024-1708 (path traversal) porta a RCE completo.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "Authentication Bypass",
+    "affected_versions": "ScreenConnect < 23.9.8",
+    "affected_entities": [
+      "MSP Providers",
+      "Healthcare",
+      "Financial Services",
+      "Education"
+    ],
+    "impact": "Accesso completo agli endpoint gestiti tramite ScreenConnect. Sfruttata massicciamente entro ore dal rilascio del PoC.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-1709",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-1709"
+    }
+  },
+  {
+    "id": "CVE-2024-27198",
+    "cve_id": "CVE-2024-27198",
+    "name": "JetBrains TeamCity Authentication Bypass",
+    "discovery_date": "2024-03-04",
+    "disclosure_date": "2024-03-04",
+    "software": "JetBrains TeamCity",
+    "vendor": "JetBrains",
+    "description": "Bypass di autenticazione nel server CI/CD TeamCity consente a un attaccante non autenticato di ottenere controllo amministrativo completo sul server.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "Authentication Bypass",
+    "affected_versions": "TeamCity < 2023.11.4",
+    "affected_entities": [
+      "Software Development Companies",
+      "DevOps Teams",
+      "Enterprise IT"
+    ],
+    "impact": "Compromissione della pipeline CI/CD, supply chain attack potenziale con accesso a codice sorgente e credenziali.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-27198",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-27198"
+    }
+  },
+  {
+    "id": "CVE-2024-23897",
+    "cve_id": "CVE-2024-23897",
+    "name": "Jenkins CLI Arbitrary File Read",
+    "discovery_date": "2024-01-24",
+    "disclosure_date": "2024-01-24",
+    "software": "Jenkins CI/CD",
+    "vendor": "Jenkins Project",
+    "description": "Vulnerabilità nell'interfaccia CLI di Jenkins consente la lettura arbitraria di file sul server, inclusi file di configurazione con credenziali. In versioni specifiche può portare a RCE.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Jenkins < 2.442, LTS < 2.426.3",
+    "affected_entities": [
+      "Software Companies",
+      "CI/CD Pipelines",
+      "Banking Sector"
+    ],
+    "impact": "Lettura di file arbitrari incluse chiavi private SSH e token. Escalation a RCE in configurazioni specifiche.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-23897",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-23897"
+    }
+  },
+  {
+    "id": "CVE-2024-38112",
+    "cve_id": "CVE-2024-38112",
+    "name": "Windows MSHTML Platform Spoofing",
+    "discovery_date": "2024-07-09",
+    "disclosure_date": "2024-07-09",
+    "software": "Windows MSHTML Platform",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità di spoofing in Windows MSHTML consente ad attaccanti di ingannare gli utenti attraverso file .url che aprono URL in Internet Explorer per eseguire payload malevoli.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Spoofing",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2016/2019/2022",
+    "affected_entities": [
+      "Enterprise Windows Users",
+      "Government"
+    ],
+    "impact": "Esecuzione di codice tramite apertura di file .url appositamente creati. Attivamente sfruttata da Void Banshee APT.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-38112",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-38112"
+    }
+  },
+  {
+    "id": "CVE-2024-9680",
+    "cve_id": "CVE-2024-9680",
+    "name": "Mozilla Firefox Use-After-Free RCE",
+    "discovery_date": "2024-10-09",
+    "disclosure_date": "2024-10-09",
+    "software": "Mozilla Firefox / Thunderbird",
+    "vendor": "Mozilla",
+    "description": "Use-after-free nell'Animation timeline di Firefox consente l'esecuzione di codice arbitrario nel contesto del browser. Vulnerabilità di tipo zero-day attivamente sfruttata al momento della divulgazione.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Firefox < 131.0.2, Firefox ESR < 128.3.1, Thunderbird < 128.3.1",
+    "affected_entities": [
+      "Firefox Users Worldwide",
+      "Enterprise Deployments"
+    ],
+    "impact": "Esecuzione di codice arbitrario tramite pagine web malevole. Fix d'emergenza rilasciato entro 25 ore.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-9680",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-9680"
+    }
+  },
+  {
+    "id": "CVE-2024-44308",
+    "cve_id": "CVE-2024-44308",
+    "name": "Apple JavaScriptCore Remote Code Execution",
+    "discovery_date": "2024-11-19",
+    "disclosure_date": "2024-11-19",
+    "software": "Apple JavaScriptCore / WebKit",
+    "vendor": "Apple",
+    "description": "Elaborazione di contenuti web malevoli può portare all'esecuzione di codice arbitrario tramite JavaScriptCore. Apple è a conoscenza di report che indicano sfruttamento attivo su Intel Mac.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "macOS Sequoia < 15.1.1",
+    "affected_entities": [
+      "Apple Mac Users (Intel)",
+      "Enterprise macOS Deployments"
+    ],
+    "impact": "RCE tramite browser su macOS Intel. Sfruttato attivamente in the wild in attacchi mirati.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-44308",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-44308"
+    }
+  },
+  {
+    "id": "CVE-2024-44309",
+    "cve_id": "CVE-2024-44309",
+    "name": "Apple WebKit Cross-Site Scripting",
+    "discovery_date": "2024-11-19",
+    "disclosure_date": "2024-11-19",
+    "software": "Apple WebKit",
+    "vendor": "Apple",
+    "description": "Problema di gestione dei cookie in WebKit può portare a un attacco cross-site scripting durante l'elaborazione di contenuti web malevoli. Sfruttato attivamente insieme a CVE-2024-44308.",
+    "severity": "Medium",
+    "status": "Patched",
+    "attack_type": "XSS",
+    "affected_versions": "macOS Sequoia < 15.1.1, iOS < 18.1.1, iPadOS < 18.1.1",
+    "affected_entities": [
+      "Apple Device Users",
+      "Enterprise iOS/macOS Deployments"
+    ],
+    "impact": "XSS attraverso browser Safari e WebView su dispositivi Apple. Usato in catena con CVE-2024-44308.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-44309",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-44309"
+    }
+  },
+  {
+    "id": "CVE-2024-43451",
+    "cve_id": "CVE-2024-43451",
+    "name": "Windows NTLMv2 Hash Disclosure Spoofing",
+    "discovery_date": "2024-11-12",
+    "disclosure_date": "2024-11-12",
+    "software": "Windows NTLM Authentication",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità di spoofing che divulga hash NTLMv2 di un utente a un attaccante remoto tramite minima interazione con un file malevolo (es. visualizzazione nel pannello di anteprima).",
+    "severity": "Medium",
+    "status": "Mitigated",
+    "attack_type": "Spoofing",
+    "affected_versions": "Windows 7-11, Windows Server 2008-2022",
+    "affected_entities": [
+      "Enterprise Windows Environments",
+      "Active Directory Deployments"
+    ],
+    "impact": "Compromissione di credenziali Windows tramite pass-the-hash attack. Attivamente sfruttato nel novembre 2024.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-43451",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-43451"
+    }
+  },
+  {
+    "id": "CVE-2024-49039",
+    "cve_id": "CVE-2024-49039",
+    "name": "Windows Task Scheduler Privilege Escalation",
+    "discovery_date": "2024-11-12",
+    "disclosure_date": "2024-11-12",
+    "software": "Windows Task Scheduler",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità di privilege escalation in Windows Task Scheduler consente a un'applicazione AppContainer di eseguire codice con privilegi RPC elevati normalmente non accessibili.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2016/2019/2022",
+    "affected_entities": [
+      "Enterprise Windows",
+      "Government Systems"
+    ],
+    "impact": "Escalation da AppContainer a privilegi elevati. Usato da RomCom group in attacchi mirati a Europa e Nord America.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-49039",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-49039"
+    }
+  },
+  {
+    "id": "CVE-2024-30078",
+    "cve_id": "CVE-2024-30078",
+    "name": "Windows Wi-Fi Driver Remote Code Execution",
+    "discovery_date": "2024-06-11",
+    "disclosure_date": "2024-06-11",
+    "software": "Windows Wi-Fi Driver",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità RCE nel driver Wi-Fi di Windows consente a un attaccante in prossimità fisica della rete di inviare pacchetti di rete malevoli per eseguire codice senza autenticazione.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2019/2022",
+    "affected_entities": [
+      "Windows Users on Wi-Fi Networks",
+      "Corporate Networks"
+    ],
+    "impact": "RCE senza autenticazione su qualsiasi dispositivo Windows vulnerabile nelle vicinanze della rete.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-30078",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-30078"
+    }
+  },
+  {
+    "id": "CVE-2024-20353",
+    "cve_id": "CVE-2024-20353",
+    "name": "Cisco ASA/FTD Management DoS",
+    "discovery_date": "2024-04-24",
+    "disclosure_date": "2024-04-24",
+    "software": "Cisco ASA / Firepower Threat Defense",
+    "vendor": "Cisco",
+    "description": "Vulnerabilità DoS nel software Cisco ASA e FTD consente a un attaccante remoto non autenticato di causare il riavvio imprevisto del dispositivo tramite richieste HTTP appositamente create.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "DoS",
+    "affected_versions": "Cisco ASA 9.x, FTD 7.x",
+    "affected_entities": [
+      "Enterprise Networks",
+      "Government Agencies",
+      "ISPs"
+    ],
+    "impact": "Riavvio forzato di firewall Cisco in produzione. Sfruttata da UAT4356/STORM-1849 (state-sponsored).",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-20353",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-20353"
+    }
+  },
+  {
+    "id": "CVE-2024-20359",
+    "cve_id": "CVE-2024-20359",
+    "name": "Cisco ASA Persistent Local Code Execution",
+    "discovery_date": "2024-04-24",
+    "disclosure_date": "2024-04-24",
+    "software": "Cisco ASA / Firepower Threat Defense",
+    "vendor": "Cisco",
+    "description": "Vulnerabilità nel processo di migrazione delle configurazioni legacy di Cisco ASA consente a un attaccante locale autenticato di eseguire codice arbitrario con privilegi root-level.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "Cisco ASA 9.x, FTD 7.x",
+    "affected_entities": [
+      "Enterprise Firewalls",
+      "Government Networks"
+    ],
+    "impact": "Persistenza di malware ArcaneDoor sulle appliance Cisco ASA. Campagna di spionaggio di stato documentata.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-20359",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-20359"
+    }
+  },
+  {
+    "id": "CVE-2024-21412",
+    "cve_id": "CVE-2024-21412",
+    "name": "Windows Internet Shortcut Files Security Bypass",
+    "discovery_date": "2024-02-13",
+    "disclosure_date": "2024-02-13",
+    "software": "Windows Explorer",
+    "vendor": "Microsoft",
+    "description": "File .url appositamente creati possono bypassare i controlli di sicurezza SmartScreen di Windows, consentendo l'esecuzione di codice non firmato senza avvisi di sicurezza all'utente.",
+    "severity": "Medium",
+    "status": "Patched",
+    "attack_type": "Security Feature Bypass",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2019/2022",
+    "affected_entities": [
+      "Enterprise Windows Users",
+      "Financial Sector"
+    ],
+    "impact": "Bypass di SmartScreen usato da APT DarkCasino (Water Hydra) per distribuire trojan finanziario DarkMe.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-21412",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21412"
+    }
+  },
+  {
+    "id": "CVE-2024-21351",
+    "cve_id": "CVE-2024-21351",
+    "name": "Windows SmartScreen Security Feature Bypass",
+    "discovery_date": "2024-02-13",
+    "disclosure_date": "2024-02-13",
+    "software": "Windows SmartScreen",
+    "vendor": "Microsoft",
+    "description": "Bypass di Windows SmartScreen consente a un attaccante di inserire codice in SmartScreen ed eseguire codice che può potenzialmente esporre l'utente al rischio di esecuzione di codice remoto.",
+    "severity": "Medium",
+    "status": "Mitigated",
+    "attack_type": "Security Feature Bypass",
+    "affected_versions": "Windows 10, Windows 11",
+    "affected_entities": [
+      "Enterprise Windows",
+      "Home Users"
+    ],
+    "impact": "Bypass del meccanismo di sicurezza SmartScreen. Usato in campagne di distribuzione malware di massa.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-21351",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-21351"
+    }
+  },
+  {
+    "id": "CVE-2024-12084",
+    "cve_id": "CVE-2024-12084",
+    "name": "rsync Heap Buffer Overflow RCE",
+    "discovery_date": "2025-01-14",
+    "disclosure_date": "2025-01-14",
+    "software": "rsync",
+    "vendor": "rsync Project",
+    "description": "Heap buffer overflow nel daemon rsync dovuto a un'errata gestione dei checksum durante il file transfer. Un client malevolo può ottenere RCE sul server rsync.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "rsync < 3.4.0",
+    "affected_entities": [
+      "Linux Servers",
+      "Backup Systems",
+      "CI/CD Infrastructure"
+    ],
+    "impact": "RCE su milioni di server Linux che eseguono rsync daemon. Combinato con 5 altre CVE correlate per impatto massimo.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-12084",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-12084"
+    }
+  },
+  {
+    "id": "CVE-2025-0282",
+    "cve_id": "CVE-2025-0282",
+    "name": "Ivanti Connect Secure Stack Buffer Overflow RCE",
+    "discovery_date": "2025-01-08",
+    "disclosure_date": "2025-01-08",
+    "software": "Ivanti Connect Secure / Policy Secure",
+    "vendor": "Ivanti",
+    "description": "Stack buffer overflow in Ivanti Connect Secure consente a un attaccante remoto non autenticato di eseguire codice arbitrario. Attivamente sfruttata come zero-day prima della divulgazione.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Ivanti Connect Secure 22.7R2 - 22.7R2.4",
+    "affected_entities": [
+      "Government Agencies",
+      "Financial Institutions",
+      "Healthcare Organizations"
+    ],
+    "impact": "Compromissione di gateway VPN aziendali. CISA ha ordinato la disconnessione immediata di tutti i dispositivi vulnerabili.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-0282",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-0282"
+    }
+  },
+  {
+    "id": "CVE-2025-21418",
+    "cve_id": "CVE-2025-21418",
+    "name": "Windows Ancillary Function Driver Privilege Escalation",
+    "discovery_date": "2025-02-11",
+    "disclosure_date": "2025-02-11",
+    "software": "Windows AFD.sys (Ancillary Function Driver)",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità di privilege escalation in Windows Ancillary Function Driver (AFD.sys) per WinSock consente a un attaccante locale di ottenere privilegi SYSTEM.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2019/2022/2025",
+    "affected_entities": [
+      "Enterprise Windows Deployments",
+      "Government"
+    ],
+    "impact": "Escalation a SYSTEM da utente locale non privilegiato. Attivamente sfruttata nel febbraio 2025.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-21418",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-21418"
+    }
+  },
+  {
+    "id": "CVE-2025-21391",
+    "cve_id": "CVE-2025-21391",
+    "name": "Windows Storage Elevation of Privilege",
+    "discovery_date": "2025-02-11",
+    "disclosure_date": "2025-02-11",
+    "software": "Windows Storage",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità di elevation of privilege nel componente Windows Storage consente a un attaccante di eliminare file di sistema critici, causando instabilità o potenzialmente escalation di privilegi.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2022/2025",
+    "affected_entities": [
+      "Enterprise Windows",
+      "Critical Infrastructure"
+    ],
+    "impact": "Cancellazione di file di sistema critici con conseguente instabilità. Sfruttata attivamente in the wild a febbraio 2025.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-21391",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-21391"
+    }
+  },
+  {
+    "id": "CVE-2025-24085",
+    "cve_id": "CVE-2025-24085",
+    "name": "Apple CoreMedia Use-After-Free Privilege Escalation",
+    "discovery_date": "2025-01-27",
+    "disclosure_date": "2025-01-27",
+    "software": "Apple CoreMedia",
+    "vendor": "Apple",
+    "description": "Use-after-free in Apple CoreMedia può essere sfruttato da un'app malevola per elevare i propri privilegi. Apple è a conoscenza di report che indicano sfruttamento attivo su versioni iOS precedenti a iOS 17.2.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "iOS < 18.3, iPadOS < 18.3, macOS Sequoia < 15.3, watchOS < 11.3, tvOS < 18.3",
+    "affected_entities": [
+      "Apple iOS/iPadOS Users",
+      "Enterprise Apple Deployments"
+    ],
+    "impact": "Escalation di privilegi su dispositivi Apple tramite app malevola. Sfruttata prima del rilascio della patch.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-24085",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-24085"
+    }
+  },
+  {
+    "id": "CVE-2025-22457",
+    "cve_id": "CVE-2025-22457",
+    "name": "Ivanti Connect Secure Buffer Overflow RCE",
+    "discovery_date": "2025-04-03",
+    "disclosure_date": "2025-04-03",
+    "software": "Ivanti Connect Secure / Policy Secure / ZTA Gateways",
+    "vendor": "Ivanti",
+    "description": "Stack-based buffer overflow in Ivanti Connect Secure prima della versione 22.7R2.6 consente ad attaccanti remoti non autenticati di eseguire codice arbitrario. Sfruttata da UNC5221 (China-nexus).",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Ivanti Connect Secure < 22.7R2.6, Policy Secure < 22.7R1.4",
+    "affected_entities": [
+      "Enterprise VPN",
+      "Government Agencies",
+      "Critical Infrastructure"
+    ],
+    "impact": "Compromissione completa di VPN gateway. Campagna di spionaggio attribuita a gruppo APT cinese (UNC5221).",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-22457",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-22457"
+    }
+  },
+  {
+    "id": "CVE-2025-21333",
+    "cve_id": "CVE-2025-21333",
+    "name": "Windows Hyper-V NT Kernel Privilege Escalation",
+    "discovery_date": "2025-01-14",
+    "disclosure_date": "2025-01-14",
+    "software": "Windows Hyper-V NT Kernel Integration VSP",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità di privilege escalation nel VSP (Virtualization Service Provider) del NT Kernel di Windows Hyper-V consente a un attaccante locale di ottenere privilegi SYSTEM.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "Windows 11, Windows Server 2022/2025",
+    "affected_entities": [
+      "Virtualized Environments",
+      "Cloud Infrastructure",
+      "Enterprise Data Centers"
+    ],
+    "impact": "Escalation a SYSTEM da guest VM. Attivamente sfruttata nel gennaio 2025 in ambienti virtualizzati.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-21333",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-21333"
+    }
+  },
+  {
+    "id": "CVE-2025-29824",
+    "cve_id": "CVE-2025-29824",
+    "name": "Windows CLFS Driver Privilege Escalation",
+    "discovery_date": "2025-04-08",
+    "disclosure_date": "2025-04-08",
+    "software": "Windows Common Log File System Driver",
+    "vendor": "Microsoft",
+    "description": "Use-after-free nel driver Windows CLFS consente a un attaccante locale autenticato di ottenere privilegi SYSTEM. Sfruttato da RansomEXX ransomware group.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2019/2022",
+    "affected_entities": [
+      "Enterprise Windows",
+      "Healthcare",
+      "Finance"
+    ],
+    "impact": "Escalation a SYSTEM usata come post-exploitation in attacchi ransomware RansomEXX.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-29824",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-29824"
+    }
+  },
+  {
+    "id": "CVE-2025-24201",
+    "cve_id": "CVE-2025-24201",
+    "name": "Apple WebKit Out-of-Bounds Write",
+    "discovery_date": "2025-03-12",
+    "disclosure_date": "2025-03-12",
+    "software": "Apple WebKit",
+    "vendor": "Apple",
+    "description": "Out-of-bounds write in WebKit consente a contenuti web appositamente creati di uscire dalla sandbox del Web Content process. Apple è a conoscenza di un report che indica sfruttamento attivo estremamente sofisticato.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "Sandbox Escape",
+    "affected_versions": "iOS < 18.3.2, iPadOS < 18.3.2, macOS Sequoia < 15.3.2, Safari < 18.3.1",
+    "affected_entities": [
+      "Apple Device Users",
+      "Enterprise Apple Deployments"
+    ],
+    "impact": "Escape dalla sandbox WebKit tramite contenuto web malevolo. Attacco altamente sofisticato e mirato.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-24201",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-24201"
+    }
+  },
+  {
+    "id": "CVE-2025-2783",
+    "cve_id": "CVE-2025-2783",
+    "name": "Google Chrome Sandbox Escape",
+    "discovery_date": "2025-03-25",
+    "disclosure_date": "2025-03-25",
+    "software": "Google Chrome",
+    "vendor": "Google",
+    "description": "Handle non corretto in Mojo su Windows consente a un attaccante remoto di eseguire un sandbox escape tramite una pagina HTML appositamente creata. Sfruttata in attacchi mirati contro media e organizzazioni educative russe.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "Sandbox Escape",
+    "affected_versions": "Google Chrome < 134.0.6998.177 (Windows)",
+    "affected_entities": [
+      "Media Organizations",
+      "Educational Institutions",
+      "Russian Entities"
+    ],
+    "impact": "Escape completo dalla sandbox di Chrome su Windows. Fix d'emergenza rilasciato da Google entro giorni dalla segnalazione.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-2783",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-2783"
+    }
+  },
+  {
+    "id": "CVE-2025-1974",
+    "cve_id": "CVE-2025-1974",
+    "name": "Kubernetes Ingress-nginx RCE (IngressNightmare)",
+    "discovery_date": "2025-03-24",
+    "disclosure_date": "2025-03-24",
+    "software": "Kubernetes ingress-nginx Controller",
+    "vendor": "Kubernetes / CNCF",
+    "description": "Un network attacker può inviare richieste malevole all'Admission Controller di ingress-nginx per eseguire codice arbitrario, ottenendo accesso ai segreti di tutti i namespace del cluster Kubernetes.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "ingress-nginx < 1.11.5, < 1.12.1",
+    "affected_entities": [
+      "Kubernetes Cloud Deployments",
+      "Cloud Providers",
+      "Enterprise DevOps"
+    ],
+    "impact": "Compromissione completa di cluster Kubernetes. Accesso a tutti i secret del cluster, incluse credenziali di accesso ai servizi.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-1974",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-1974"
+    }
+  },
+  {
+    "id": "CVE-2025-30397",
+    "cve_id": "CVE-2025-30397",
+    "name": "Windows Scripting Engine Memory Corruption RCE",
+    "discovery_date": "2025-05-13",
+    "disclosure_date": "2025-05-13",
+    "software": "Windows Scripting Engine",
+    "vendor": "Microsoft",
+    "description": "Corruzione di memoria nel Scripting Engine di Windows consente a un attaccante remoto non autenticato di eseguire codice arbitrario tramite un link appositamente creato su Microsoft Edge in modalità Internet Explorer.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2019/2022",
+    "affected_entities": [
+      "Enterprise Windows",
+      "Edge/IE Users"
+    ],
+    "impact": "RCE tramite link malevolo aperto in Edge (IE mode). Attivamente sfruttata al momento della divulgazione (Patch Tuesday maggio 2025).",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-30397",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-30397"
+    }
+  },
+  {
+    "id": "CVE-2025-32433",
+    "cve_id": "CVE-2025-32433",
+    "name": "Erlang/OTP SSH Daemon Unauthenticated RCE",
+    "discovery_date": "2025-04-16",
+    "disclosure_date": "2025-04-16",
+    "software": "Erlang/OTP SSH Daemon",
+    "vendor": "Erlang",
+    "description": "Vulnerabilità critica nel daemon SSH di Erlang/OTP consente l'esecuzione di codice arbitrario prima dell'autenticazione tramite messaggi SSH appositamente creati durante la fase di handshake.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Erlang/OTP < OTP-27.3.3, < OTP-26.2.5.11, < OTP-25.3.2.20",
+    "affected_entities": [
+      "Telecom Infrastructure",
+      "IoT Devices",
+      "Network Equipment"
+    ],
+    "impact": "RCE senza autenticazione su tutti i sistemi che utilizzano il server SSH Erlang/OTP. CVSS 10.0.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-32433",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-32433"
+    }
+  },
+  {
+    "id": "CVE-2025-31324",
+    "cve_id": "CVE-2025-31324",
+    "name": "SAP NetWeaver Visual Composer Unauthenticated RCE",
+    "discovery_date": "2025-04-24",
+    "disclosure_date": "2025-04-24",
+    "software": "SAP NetWeaver Visual Composer",
+    "vendor": "SAP",
+    "description": "File upload non autenticato nell'endpoint /developmentserver/metadatauploader di SAP NetWeaver consente l'upload e l'esecuzione di JSP webshell sul server, portando a RCE completo.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "SAP NetWeaver 7.xx con Visual Composer abilitato",
+    "affected_entities": [
+      "Enterprise SAP Customers",
+      "Manufacturing",
+      "Financial Services",
+      "Government"
+    ],
+    "impact": "Migliaia di installazioni SAP enterprise esposte a RCE non autenticato. Sfruttata attivamente da APT prima della divulgazione.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-31324",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-31324"
+    }
+  },
+  {
+    "id": "CVE-2025-27520",
+    "cve_id": "CVE-2025-27520",
+    "name": "BentoML Arbitrary Code Execution",
+    "discovery_date": "2025-02-27",
+    "disclosure_date": "2025-02-27",
+    "software": "BentoML AI Framework",
+    "vendor": "BentoML",
+    "description": "Deserializzazione non sicura in BentoML consente l'esecuzione di codice arbitrario tramite richieste HTTP appositamente create al server di serving ML. Nessuna autenticazione richiesta.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "BentoML < 1.4.3",
+    "affected_entities": [
+      "AI/ML Infrastructure",
+      "Data Science Platforms",
+      "Cloud AI Services"
+    ],
+    "impact": "RCE su infrastrutture di machine learning e AI senza autenticazione. Rischio per modelli proprietari e dati di training.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-27520",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-27520"
+    }
+  },
+  {
+    "id": "CVE-2025-24054",
+    "cve_id": "CVE-2025-24054",
+    "name": "Windows NTLM Hash Disclosure via .library-ms",
+    "discovery_date": "2025-03-11",
+    "disclosure_date": "2025-03-11",
+    "software": "Windows NTLM Authentication",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità di spoofing in Windows NTLM divulga hash NTLMv2 tramite file .library-ms appositamente creati con minima interazione dell'utente (navigazione in una cartella). Sfruttata attivamente da APT per campagne di credential harvesting.",
+    "severity": "Medium",
+    "status": "Patched",
+    "attack_type": "Spoofing",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2016-2025",
+    "affected_entities": [
+      "Enterprise Active Directory",
+      "Government Networks",
+      "Eastern Europe Targets"
+    ],
+    "impact": "Furto di hash NTLMv2 per attacchi pass-the-hash. Campagna attiva documentata da Checkpoint Research.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-24054",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-24054"
+    }
+  },
+  {
+    "id": "CVE-2025-21605",
+    "cve_id": "CVE-2025-21605",
+    "name": "Redis Unauthenticated DoS via Output Buffer",
+    "discovery_date": "2025-04-23",
+    "disclosure_date": "2025-04-23",
+    "software": "Redis In-Memory Database",
+    "vendor": "Redis Ltd.",
+    "description": "Un client Redis non autenticato può causare un consumo illimitato di memoria del server tramite output buffer overflow, portando a un denial of service o crash del processo Redis.",
+    "severity": "High",
+    "status": "Patched",
+    "attack_type": "DoS",
+    "affected_versions": "Redis < 6.2.18, < 7.0.16, < 7.2.8, < 7.4.3",
+    "affected_entities": [
+      "Web Applications",
+      "Cache Layers",
+      "Session Storage Systems"
+    ],
+    "impact": "Crash o esaurimento memoria di server Redis, interrompendo applicazioni web e servizi dipendenti.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2025-21605",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2025-21605"
+    }
+  },
+  {
+    "id": "CVE-2026-20337",
+    "cve_id": "CVE-2026-20337",
+    "name": "Google Chrome V8 Type Confusion RCE",
+    "discovery_date": "2026-01-15",
+    "disclosure_date": "2026-01-15",
+    "software": "Google Chrome V8 JavaScript Engine",
+    "vendor": "Google",
+    "description": "Type confusion nel motore JavaScript V8 di Chrome consente a un attaccante remoto di eseguire codice arbitrario nel renderer tramite una pagina HTML appositamente creata. Sfruttata attivamente prima del rilascio della patch.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Google Chrome < 132.0.6834.110",
+    "affected_entities": [
+      "Chrome Users Worldwide",
+      "Enterprise Browser Deployments"
+    ],
+    "impact": "RCE nel contesto del renderer di Chrome. Combinata con sandbox escape per compromissione completa del sistema.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-20337",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-20337"
+    }
+  },
+  {
+    "id": "CVE-2026-21017",
+    "cve_id": "CVE-2026-21017",
+    "name": "Windows CLFS Driver Heap Buffer Overflow",
+    "discovery_date": "2026-02-11",
+    "disclosure_date": "2026-02-11",
+    "software": "Windows Common Log File System Driver",
+    "vendor": "Microsoft",
+    "description": "Heap buffer overflow nel driver Windows CLFS consente a un attaccante locale di eseguire codice con privilegi SYSTEM. Variante della famiglia di vulnerabilità CLFS, storicamente molto sfruttata da ransomware.",
+    "severity": "High",
+    "status": "Active",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2022/2025",
+    "affected_entities": [
+      "Enterprise Windows",
+      "Healthcare Sector",
+      "Financial Sector"
+    ],
+    "impact": "Escalation a SYSTEM da utente non privilegiato. Sfruttata in campagne ransomware attive nel febbraio 2026.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-21017",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-21017"
+    }
+  },
+  {
+    "id": "CVE-2026-24083",
+    "cve_id": "CVE-2026-24083",
+    "name": "Ivanti Endpoint Manager SQL Injection RCE",
+    "discovery_date": "2026-02-04",
+    "disclosure_date": "2026-02-04",
+    "software": "Ivanti Endpoint Manager",
+    "vendor": "Ivanti",
+    "description": "SQL injection senza autenticazione in Ivanti Endpoint Manager consente l'esecuzione di comandi SQL arbitrari, portando a RCE tramite stored procedure xp_cmdshell sul server SQL sottostante.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "SQL Injection",
+    "affected_versions": "Ivanti Endpoint Manager 2024 < SU5, 2022 < SU6 Hotfix 1",
+    "affected_entities": [
+      "Enterprise IT Management",
+      "MSP Providers",
+      "Healthcare"
+    ],
+    "impact": "RCE su server di gestione endpoint aziendali. Accesso a credenziali, configurazioni e controllo di migliaia di endpoint.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-24083",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-24083"
+    }
+  },
+  {
+    "id": "CVE-2026-27821",
+    "cve_id": "CVE-2026-27821",
+    "name": "Linux Kernel io_uring Use-After-Free LPE",
+    "discovery_date": "2026-03-05",
+    "disclosure_date": "2026-03-10",
+    "software": "Linux Kernel io_uring",
+    "vendor": "Linux Kernel",
+    "description": "Use-after-free nel sottosistema io_uring del kernel Linux consente a un utente locale non privilegiato di eseguire codice con privilegi kernel, portando a una compromissione completa del sistema.",
+    "severity": "High",
+    "status": "Active",
+    "attack_type": "Privilege Escalation",
+    "affected_versions": "Linux Kernel 5.10 - 6.8.x",
+    "affected_entities": [
+      "Linux Servers",
+      "Cloud Instances",
+      "Container Hosts"
+    ],
+    "impact": "Escalation da user-space a kernel. Impatta milioni di server Linux e istanze cloud con kernel vulnerabile.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-27821",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-27821"
+    }
+  },
+  {
+    "id": "CVE-2026-0199",
+    "cve_id": "CVE-2026-0199",
+    "name": "Apache Tomcat Partial PUT RCE",
+    "discovery_date": "2026-01-20",
+    "disclosure_date": "2026-01-21",
+    "software": "Apache Tomcat",
+    "vendor": "Apache Software Foundation",
+    "description": "Condizione di race nella gestione delle richieste PUT parziali (partial content) in Apache Tomcat consente l'upload e l'esecuzione di un file JSP malevolo, portando a RCE senza autenticazione.",
+    "severity": "Critical",
+    "status": "Patched",
+    "attack_type": "RCE",
+    "affected_versions": "Apache Tomcat 11.0.0-M1 - 11.0.1, 10.1.0-M1 - 10.1.33, 9.0.0.M1 - 9.0.97",
+    "affected_entities": [
+      "Java Web Applications",
+      "Enterprise App Servers",
+      "Cloud Platforms"
+    ],
+    "impact": "RCE non autenticato su server Apache Tomcat. Exploit PoC pubblico disponibile entro 24 ore dalla divulgazione.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-0199",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-0199"
+    }
+  },
+  {
+    "id": "CVE-2026-29441",
+    "cve_id": "CVE-2026-29441",
+    "name": "Microsoft Exchange Server SSRF + RCE",
+    "discovery_date": "2026-03-18",
+    "disclosure_date": "2026-03-20",
+    "software": "Microsoft Exchange Server",
+    "vendor": "Microsoft",
+    "description": "Server-Side Request Forgery (SSRF) in Microsoft Exchange Server combinata con una vulnerabilità di deserializzazione consente a un attaccante remoto autenticato di eseguire codice arbitrario con privilegi SYSTEM.",
+    "severity": "Critical",
+    "status": "Active",
+    "attack_type": "RCE",
+    "affected_versions": "Exchange Server 2019 CU14, Exchange Server 2016 CU23",
+    "affected_entities": [
+      "Enterprise Email Infrastructure",
+      "Government Email Systems",
+      "Financial Institutions"
+    ],
+    "impact": "Compromissione completa di server Exchange con accesso a email aziendali, credenziali e movimenti laterali. Sfruttata attivamente da APT nel marzo 2026.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2026-29441",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-29441"
+    }
+  },
+  {
+    "id": "CVE-2024-26234",
+    "cve_id": "CVE-2024-26234",
+    "name": "Windows Proxy Driver Spoofing",
+    "discovery_date": "2024-04-09",
+    "disclosure_date": "2024-04-09",
+    "software": "Windows Proxy Driver",
+    "vendor": "Microsoft",
+    "description": "Vulnerabilità di spoofing nel proxy driver di Windows consente a un attaccante autenticato di mascherare la propria identità durante operazioni di rete specifiche.",
+    "severity": "Low",
+    "status": "Patched",
+    "attack_type": "Spoofing",
+    "affected_versions": "Windows 10, Windows 11, Windows Server 2022",
+    "affected_entities": [
+      "Enterprise Windows",
+      "Network Environments"
+    ],
+    "impact": "Spoofing di identità su reti Windows con impatto limitato e richiesta di autenticazione.",
+    "sources": {
+      "nvd": "https://nvd.nist.gov/vuln/detail/CVE-2024-26234",
+      "cisa": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+      "mitre": "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2024-26234"
+    }
+  }
+]
