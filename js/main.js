@@ -366,7 +366,7 @@
   });
 
   /* -------------------------------------------------------
-     Export for analytics / timeline / zero-day pages
+     Export for analytics / timeline pages
   ------------------------------------------------------- */
   window.CyberThesis = {
     loadData() {
@@ -375,15 +375,6 @@
         .then(r => r.json())
         .then(data => {
           data.sort((a, b) => b.date.localeCompare(a.date));
-          return data;
-        });
-    },
-    loadZeroDays() {
-      return fetch(new URL('data/zero-days.json',
-        document.querySelector('base')?.href || location.href.replace(/[^/]*$/,'')).href)
-        .then(r => r.json())
-        .then(data => {
-          data.sort((a, b) => b.disclosure_date.localeCompare(a.disclosure_date));
           return data;
         });
     },
