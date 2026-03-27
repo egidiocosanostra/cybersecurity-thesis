@@ -10,10 +10,13 @@
     "cvss_score": 9.0,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Stack-based buffer overflow in Ivanti Connect Secure VPN consente l'esecuzione remota di codice senza autenticazione.",
     "impact": "Compromissione totale del gateway VPN. Attribuita a gruppi nation-state cinesi (UNC5337). Centinaia di organizzazioni colpite globalmente.",
     "affected_versions": "Ivanti Connect Secure < 22.7R2.4",
-    "source": "CISA KEV / Ivanti Advisory"
+    "affected_entities": ["Agenzie governative", "Organizzazioni sanitarie", "Istituzioni finanziarie"],
+    "source": "CISA KEV / Ivanti Advisory",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0282"
   },
   {
     "id": "zd-002",
@@ -26,10 +29,13 @@
     "cvss_score": 7.8,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Vulnerabilità use-after-free nel kernel NT di Windows consente l'escalation di privilegi da utente locale a SYSTEM.",
     "impact": "Sfruttata attivamente per ottenere privilegi SYSTEM su macchine Windows. Corretta nel Patch Tuesday di gennaio 2025.",
     "affected_versions": "Windows 10/11, Windows Server 2019/2022",
-    "source": "Microsoft Security Update Guide"
+    "affected_entities": ["Organizzazioni enterprise", "Cloud service provider", "Data center"],
+    "source": "Microsoft Security Update Guide",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21333"
   },
   {
     "id": "zd-003",
@@ -42,10 +48,13 @@
     "cvss_score": 7.8,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Vulnerabilità use-after-free in Apple Core Media sfruttata attivamente su dispositivi iPhone e Mac aggiornati.",
     "impact": "Permette ad app maligne di elevare i privilegi su iOS e macOS. Apple conferma sfruttamento su dispositivi aggiornati.",
     "affected_versions": "iOS < 18.3, macOS Sequoia < 15.3",
-    "source": "Apple Security Advisory"
+    "affected_entities": ["Individui ad alto rischio", "Giornalisti", "Attivisti", "Diplomatici"],
+    "source": "Apple Security Advisory",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-24085"
   },
   {
     "id": "zd-004",
@@ -58,10 +67,13 @@
     "cvss_score": 9.8,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Deserializzazione non sicura nel componente Appliance Management Console (AMC) di SonicWall SMA1000.",
     "impact": "Esecuzione remota di codice pre-autenticazione. Sfruttata da gruppi ransomware per accesso iniziale alle reti aziendali.",
     "affected_versions": "SMA1000 <= 12.4.3-02804",
-    "source": "SonicWall PSIRT / CISA Advisory"
+    "affected_entities": ["Reti enterprise", "Managed service provider", "PMI"],
+    "source": "SonicWall PSIRT / CISA Advisory",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-23006"
   },
   {
     "id": "zd-005",
@@ -74,10 +86,13 @@
     "cvss_score": 6.1,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Vulnerabilità di autorizzazione che disabilita la modalità USB Restricted Mode su dispositivi bloccati.",
     "impact": "Utilizzata da strumenti forensi e spyware (tipo Cellebrite) per accedere a iPhone bloccati. Colpisce individui ad alto rischio.",
     "affected_versions": "iOS < 18.3.1, iPadOS < 18.3.1",
-    "source": "Apple Security Advisory / Citizen Lab"
+    "affected_entities": ["Individui ad alto rischio", "Obiettivi politici", "Soggetti sotto sorveglianza"],
+    "source": "Apple Security Advisory / Citizen Lab",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-24200"
   },
   {
     "id": "zd-006",
@@ -90,10 +105,13 @@
     "cvss_score": 7.8,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Vulnerabilità di link following nel Windows Disk Cleanup consente l'escalation di privilegi locali a SYSTEM.",
     "impact": "Sfruttata in campagne di attacco post-compromissione per ottenere persistenza elevata su sistemi Windows.",
     "affected_versions": "Windows 10/11, Windows Server 2016/2019/2022",
-    "source": "Microsoft Security Update Guide"
+    "affected_entities": ["Sistemi Windows enterprise", "Agenzie governative"],
+    "source": "Microsoft Security Update Guide",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-21420"
   },
   {
     "id": "zd-007",
@@ -106,10 +124,13 @@
     "cvss_score": 8.6,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Vulnerabilità di deserializzazione in Trimble Cityworks, software GIS per infrastrutture pubbliche, sfruttata per distribuzione di malware.",
     "impact": "Sfruttata contro agenzie governative locali e infrastrutture critiche USA. CISA emette advisory urgente.",
     "affected_versions": "Cityworks < 15.8.9, Office Series < 23.10",
-    "source": "CISA KEV / Trimble Advisory"
+    "affected_entities": ["Agenzie governative locali USA", "Servizi pubblici", "Infrastrutture critiche"],
+    "source": "CISA KEV / Trimble Advisory",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-0994"
   },
   {
     "id": "zd-008",
@@ -122,10 +143,13 @@
     "cvss_score": 8.8,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Vulnerabilità out-of-bounds write in WebKit consente l'escape dalla sandbox del browser su iOS e macOS.",
     "impact": "Contenuto web malformato può compromettere il sistema host. Usata in catene exploit per attacchi di spionaggio mirati.",
     "affected_versions": "iOS < 18.3.2, macOS Sequoia < 15.3.2, Safari < 18.3.2",
-    "source": "Apple Security Advisory"
+    "affected_entities": ["Utenti iOS/macOS", "Individui ad alto rischio", "Obiettivi di spionaggio"],
+    "source": "Apple Security Advisory",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-24201"
   },
   {
     "id": "zd-009",
@@ -138,10 +162,13 @@
     "cvss_score": 10.0,
     "exploited_in_wild": false,
     "patch_available": true,
+    "status": "Patched",
     "description": "Deserializzazione di schema non sicura in Apache Parquet Java consente l'esecuzione remota di codice alla lettura di file Parquet.",
     "impact": "CVSS 10.0 — impatto massimo. Qualsiasi sistema che processi file Parquet da fonti non attendibili è vulnerabile. Ampiamente usato in pipeline big data.",
     "affected_versions": "Apache Parquet Java <= 1.15.0",
-    "source": "Apache Security Advisories / GitHub"
+    "affected_entities": ["Pipeline big data", "Team di data engineering", "Piattaforme cloud"],
+    "source": "Apache Security Advisories / GitHub",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-30065"
   },
   {
     "id": "zd-010",
@@ -154,10 +181,13 @@
     "cvss_score": 9.8,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Buffer overflow nel framework Core Audio durante l'elaborazione di stream audio appositamente costruiti.",
     "impact": "Codice arbitrario eseguibile aprendo un file audio malevolo. Sfruttato in attacchi mirati contro individui ad alto rischio.",
     "affected_versions": "iOS < 18.4.1, macOS Sequoia < 15.4.1",
-    "source": "Apple Security Advisory"
+    "affected_entities": ["Individui ad alto rischio", "Obiettivi di sorveglianza", "Utenti iOS/macOS"],
+    "source": "Apple Security Advisory",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-31200"
   },
   {
     "id": "zd-011",
@@ -170,10 +200,13 @@
     "cvss_score": 7.8,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Vulnerabilità use-after-free nel driver CLFS di Windows consente l'escalation di privilegi a SYSTEM.",
     "impact": "Usata dal gruppo ransomware Storm-2460 nella distribuzione di PipeMagic backdoor. Corretta nell'Patch Tuesday di aprile 2025.",
     "affected_versions": "Windows 10/11, Windows Server 2016-2025",
-    "source": "Microsoft Security Update Guide / Mandiant"
+    "affected_entities": ["Organizzazioni enterprise", "Vittime ransomware Storm-2460", "Utenti Windows"],
+    "source": "Microsoft Security Update Guide / Mandiant",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-29824"
   },
   {
     "id": "zd-012",
@@ -186,10 +219,13 @@
     "cvss_score": 6.5,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Vulnerabilità di spoofing NTLM consente la cattura degli hash NTLMv2 attraverso un file .library-ms appositamente costruito.",
     "impact": "Sfruttata in campagne di spionaggio attribuite ad APT legati alla Russia per rubare credenziali Windows con minima interazione utente.",
     "affected_versions": "Windows 7 – Windows 11, Server 2008 – 2025",
-    "source": "Check Point Research / Microsoft Advisory"
+    "affected_entities": ["Agenzie governative", "Organizzazioni diplomatiche", "Istituzioni polacche"],
+    "source": "Check Point Research / Microsoft Advisory",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-24054"
   },
   {
     "id": "zd-013",
@@ -202,10 +238,13 @@
     "cvss_score": 10.0,
     "exploited_in_wild": false,
     "patch_available": true,
+    "status": "Patched",
     "description": "Flaw nella gestione dei messaggi SSH in Erlang/OTP consente l'esecuzione remota di codice pre-autenticazione.",
     "impact": "CVSS 10.0 — chiunque esegua il daemon SSH Erlang è vulnerabile senza autenticazione. Impatta dispositivi di rete e sistemi IoT basati su Erlang.",
     "affected_versions": "Erlang/OTP < OTP-27.3.3, < OTP-26.2.5.11, < OTP-25.3.2.21",
-    "source": "Erlang Security Advisory / CERT"
+    "affected_entities": ["Infrastrutture telecom", "Dispositivi IoT", "Apparati di rete"],
+    "source": "Erlang Security Advisory / CERT",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-32433"
   },
   {
     "id": "zd-014",
@@ -218,10 +257,13 @@
     "cvss_score": 9.8,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Endpoint API non autenticato in Langflow AI consente l'esecuzione di codice Python arbitrario sul server.",
     "impact": "Sfruttata attivamente entro settimane dalla divulgazione. Mette a rischio pipeline AI/ML e server di sviluppo esposti su Internet.",
     "affected_versions": "Langflow < 1.3.0",
-    "source": "CISA KEV / Horizon3 Research"
+    "affected_entities": ["Team di sviluppo AI/ML", "Clienti DataStax", "Istituti di ricerca"],
+    "source": "CISA KEV / Horizon3 Research",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-3248"
   },
   {
     "id": "zd-015",
@@ -234,9 +276,12 @@
     "cvss_score": 7.0,
     "exploited_in_wild": true,
     "patch_available": true,
+    "status": "Patched",
     "description": "Flaw di neutralizzazione input in MMC consente il bypass delle protezioni di sicurezza tramite file .msc malevoli.",
     "impact": "Sfruttata dal gruppo APT EncryptHub per distribuire backdoor e infostealer. Richiede interazione dell'utente per aprire un file.",
     "affected_versions": "Windows 10/11, Windows Server 2016-2025",
-    "source": "Trend Micro Research / Microsoft Advisory"
+    "affected_entities": ["Utenti Windows enterprise", "Agenzie governative", "Vittime APT EncryptHub"],
+    "source": "Trend Micro Research / Microsoft Advisory",
+    "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-26633"
   }
 ]
