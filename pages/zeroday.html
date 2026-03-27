@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Day — Cybersecurity Thesis</title>
+  <meta name="description" content="Vulnerabilità zero-day rilevanti del 2025-2026 con CVE, CVSS e stato di patch">
+  <base href="../">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ---- Zero Day page styles ---- */
+    .zd-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .zd-table-wrap { overflow-x: auto; }
+    .zd-table {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+    }
+    .zd-table th,
+    .zd-table td {
+      text-align: left; padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .zd-table th {
+      font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+      color: var(--txt-sub); font-weight: 600; white-space: nowrap;
+      position: sticky; top: 0; background: var(--surface);
+    }
+    .zd-table tbody tr:last-child td { border-bottom: none; }
+    .zd-table tbody tr:hover td { background: rgba(0,0,0,.02); }
+    [data-theme="dark"] .zd-table tbody tr:hover td { background: rgba(255,255,255,.03); }
+
+    .zd-cve {
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+      font-size: 12px; font-weight: 600;
+      color: var(--accent); white-space: nowrap;
+    }
+    .zd-product { font-weight: 600; font-size: 13px; }
+    .zd-vendor  { font-size: 11px; color: var(--txt-sub); margin-top: 2px; }
+
+    .cvss-pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 38px; padding: 2px 8px; border-radius: var(--r-full);
+      font-size: 12px; font-weight: 700; white-space: nowrap;
+    }
+    .cvss-critical { background: rgba(255,59,48,.12);  color: var(--critical); }
+    .cvss-high     { background: rgba(255,149,0,.12);  color: var(--high); }
+    .cvss-medium   { background: rgba(255,204,0,.15);  color: #a07000; }
+    [data-theme="dark"] .cvss-medium { color: var(--medium); }
+
+    .wild-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: var(--r-full);
+      font-size: 11px; font-weight: 600;
+    }
+    .wild-yes { background: rgba(255,59,48,.10); color: var(--critical); }
+    .wild-no  { background: rgba(52,199,89,.10); color: #1a8a3a; }
+    [data-theme="dark"] .wild-no { color: var(--low); }
+
+    .patch-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: var(--r-full);
+      font-size: 11px; font-weight: 600;
+    }
+    .patch-yes { background: rgba(52,199,89,.10); color: #1a8a3a; }
+    .patch-no  { background: rgba(255,59,48,.10); color: var(--critical); }
+    [data-theme="dark"] .patch-yes { color: var(--low); }
+
+    .zd-desc { font-size: 12px; color: var(--txt-sub); line-height: 1.5; max-width: 320px; }
+
+    /* filter bar */
+    .zd-filters {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; align-items: center;
+    }
+    .zd-filter-btn {
+      padding: 5px 14px; border-radius: var(--r-full);
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--txt-sub); font-size: 13px; font-family: var(--font);
+      cursor: pointer; transition: background var(--ease), color var(--ease), border-color var(--ease);
+    }
+    .zd-filter-btn:hover { background: var(--bg); color: var(--txt); }
+    .zd-filter-btn.active {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+    .zd-count {
+      font-size: 13px; color: var(--txt-sub);
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: var(--r-full); margin-left: auto;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" role="navigation">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">🛡️ Cyber<span>Thesis</span></a>
+    <ul class="nav__links" id="nav-links">
+      <li><a href="index.html">Dashboard</a></li>
+      <li><a href="pages/analytics.html">Analytics</a></li>
+      <li><a href="pages/timeline.html">Timeline</a></li>
+      <li><a href="pages/zeroday.html">Zero Day</a></li>
+      <li><a href="pages/about.html">About</a></li>
+    </ul>
+    <div class="nav__actions">
+      <button class="btn-icon theme-toggle" aria-label="Modalità scura">🌙</button>
+      <button class="nav__hamburger" aria-label="Apri menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="page-wrap">
+  <div class="container">
+
+    <div style="margin-bottom:28px;">
+      <div class="page-badge">💀 Zero Day</div>
+      <h1 class="section-title">Vulnerabilità Zero-Day</h1>
+      <p class="section-subtitle">CVE critiche sfruttate attivamente nel 2025-2026 — stato di patch, CVSS e impatto reale</p>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="zd-stats-grid" id="zd-stats-grid" aria-label="Statistiche zero-day">
+      <div class="stat-card">
+        <div class="stat-card__icon">💀</div>
+        <div class="stat-card__label">Totale CVE</div>
+        <div class="stat-card__value" id="zd-stat-total">—</div>
+        <div class="stat-card__sub">Nel dataset</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon">🔥</div>
+        <div class="stat-card__label">Sfruttate in-the-wild</div>
+        <div class="stat-card__value" id="zd-stat-wild">—</div>
+        <div class="stat-card__sub">Con exploit attivo</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon">🩹</div>
+        <div class="stat-card__label">Patchate</div>
+        <div class="stat-card__value" id="zd-stat-patched">—</div>
+        <div class="stat-card__sub">Con fix disponibile</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon">⚠️</div>
+        <div class="stat-card__label">CVSS medio</div>
+        <div class="stat-card__value" id="zd-stat-cvss">—</div>
+        <div class="stat-card__sub">Punteggio medio</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="full-card" style="padding: 16px 24px;">
+      <div class="zd-filters" id="zd-filters" aria-label="Filtri zero-day">
+        <button class="zd-filter-btn active" data-filter="all">Tutti</button>
+        <button class="zd-filter-btn" data-filter="wild">🔥 In-the-Wild</button>
+        <button class="zd-filter-btn" data-filter="critical">🔴 Critical</button>
+        <button class="zd-filter-btn" data-filter="unpatched">⚠️ Non patchate</button>
+        <span class="zd-count" id="zd-count">Caricamento…</span>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="full-card" style="padding: 0; overflow: hidden;">
+      <div class="zd-table-wrap">
+        <table class="zd-table" id="zd-table" aria-label="Tabella vulnerabilità zero-day">
+          <thead>
+            <tr>
+              <th>CVE ID</th>
+              <th>Prodotto / Vendor</th>
+              <th>Categoria</th>
+              <th>CVSS</th>
+              <th>Severità</th>
+              <th>In-the-Wild</th>
+              <th>Patch</th>
+              <th>Data</th>
+              <th>Descrizione</th>
+            </tr>
+          </thead>
+          <tbody id="zd-tbody">
+            <tr>
+              <td colspan="9" style="text-align:center; padding: 40px; color:var(--txt-sub);">
+                ⏳ Caricamento dati…
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Info card -->
+    <div class="full-card" style="margin-top: 24px;">
+      <div class="chart-card__title" style="margin-bottom: 12px;">ℹ️ Cosa sono le vulnerabilità Zero-Day?</div>
+      <p style="font-size:14px;color:var(--txt-sub);line-height:1.7;max-width:780px;">
+        Una vulnerabilità <strong style="color:var(--txt)">zero-day</strong> è una falla di sicurezza scoperta e sfruttata
+        dagli attaccanti prima che il vendor abbia rilasciato una patch. Il termine indica che il vendor ha avuto
+        "zero giorni" per rimediare al problema. Le CVE (Common Vulnerabilities and Exposures) sono identificatori
+        univoci assegnati da MITRE. Il punteggio <strong style="color:var(--txt)">CVSS</strong> (Common Vulnerability
+        Scoring System) misura la gravità da 0 a 10. I dati <strong style="color:var(--txt)">In-the-Wild</strong>
+        indicano se la vulnerabilità è stata sfruttata attivamente in attacchi reali.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>🛡️ <strong>CyberThesis</strong> — Tesi di Laurea in Cybersecurity &nbsp;|&nbsp;
+      <a href="../index.html">Dashboard</a> &nbsp;·&nbsp;
+      <a href="analytics.html">Analytics</a> &nbsp;·&nbsp;
+      <a href="timeline.html">Timeline</a> &nbsp;·&nbsp;
+      <a href="zeroday.html">Zero Day</a> &nbsp;·&nbsp;
+      <a href="about.html">About</a>
+    </p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  let allZD = [];
+  let currentFilter = 'all';
+
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function fmtDate(iso) {
+    const [y, m, d] = iso.split('-').map(Number);
+    const months = ['Gen','Feb','Mar','Apr','Mag','Giu','Lug','Ago','Set','Ott','Nov','Dic'];
+    return `${d} ${months[m - 1]} ${y}`;
+  }
+
+  function cvssClass(score) {
+    if (score >= 9.0) return 'cvss-critical';
+    if (score >= 7.0) return 'cvss-high';
+    return 'cvss-medium';
+  }
+
+  /* Load data */
+  async function loadData() {
+    const base = document.querySelector('base')?.href || location.href.replace(/[^/]*$/, '');
+    const url  = new URL('data/zerodays.json', base).href;
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      allZD = await res.json();
+      allZD.sort((a, b) => b.date.localeCompare(a.date));
+      renderStats();
+      renderTable(allZD);
+    } catch (e) {
+      document.getElementById('zd-tbody').innerHTML = `
+        <tr><td colspan="9" style="text-align:center;padding:40px;color:var(--txt-sub);">
+          ⚠️ Errore nel caricamento: ${escHtml(e.message)}
+        </td></tr>`;
+    }
+  }
+
+  /* Stats */
+  function renderStats() {
+    const total   = allZD.length;
+    const wild    = allZD.filter(z => z.exploited_in_wild).length;
+    const patched = allZD.filter(z => z.patch_available).length;
+    const avgCvss = (allZD.reduce((s, z) => s + z.cvss_score, 0) / total).toFixed(1);
+
+    setEl('zd-stat-total',   total);
+    setEl('zd-stat-wild',    wild);
+    setEl('zd-stat-patched', patched);
+    setEl('zd-stat-cvss',    avgCvss);
+  }
+
+  function setEl(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  /* Table rendering */
+  function renderTable(list) {
+    const tbody = document.getElementById('zd-tbody');
+    const count = document.getElementById('zd-count');
+    if (count) count.textContent = `${list.length} CVE`;
+
+    if (!list.length) {
+      tbody.innerHTML = `
+        <tr><td colspan="9" style="text-align:center;padding:40px;color:var(--txt-sub);">
+          🔍 Nessuna CVE trovata per questo filtro
+        </td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = list.map(z => `
+      <tr>
+        <td><span class="zd-cve">${escHtml(z.cve_id)}</span></td>
+        <td>
+          <div class="zd-product">${escHtml(z.product)}</div>
+          <div class="zd-vendor">${escHtml(z.vendor)}</div>
+        </td>
+        <td><span class="tag">${escHtml(z.category)}</span></td>
+        <td>
+          <span class="cvss-pill ${cvssClass(z.cvss_score)}">${z.cvss_score.toFixed(1)}</span>
+        </td>
+        <td>
+          <span class="badge badge--${escHtml(z.severity.toLowerCase())}">${escHtml(z.severity)}</span>
+        </td>
+        <td>
+          ${z.exploited_in_wild
+            ? '<span class="wild-badge wild-yes">🔥 Sì</span>'
+            : '<span class="wild-badge wild-no">✓ No</span>'}
+        </td>
+        <td>
+          ${z.patch_available
+            ? '<span class="patch-badge patch-yes">🩹 Disponibile</span>'
+            : '<span class="patch-badge patch-no">✗ Mancante</span>'}
+        </td>
+        <td style="white-space:nowrap;color:var(--txt-sub);font-size:12px;">${fmtDate(z.date)}</td>
+        <td><div class="zd-desc">${escHtml(z.description)}</div></td>
+      </tr>`).join('');
+  }
+
+  /* Filtering */
+  function applyFilter(filter) {
+    currentFilter = filter;
+    let list = allZD;
+    if (filter === 'wild')      list = allZD.filter(z => z.exploited_in_wild);
+    if (filter === 'critical')  list = allZD.filter(z => z.severity === 'Critical');
+    if (filter === 'unpatched') list = allZD.filter(z => !z.patch_available);
+    renderTable(list);
+  }
+
+  /* Filter buttons */
+  function initFilters() {
+    document.getElementById('zd-filters')?.querySelectorAll('.zd-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.zd-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyFilter(btn.dataset.filter);
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initFilters();
+    loadData();
+  });
+}());
+</script>
+</body>
+</html>
